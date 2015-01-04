@@ -7,7 +7,11 @@ Read wiki for setup
 
 See: https://bitcointalk.org/index.php?topic=911212
 
+Whats New:
+-
+
 Planned Features:
 
 - 2fa Authentication
 - login ratelimiting 
+- Nicer Theme
