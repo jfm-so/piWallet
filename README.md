@@ -15,3 +15,5 @@ Planned Features:
 - 2fa Authentication
 - login ratelimiting 
 - Nicer Theme
+
+Donate: 13jy6rHB7HMgQBoYxQQXSM7TFTZZ6CDAAZ
