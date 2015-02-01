@@ -53,7 +53,7 @@ class User {
 			{
 				return "Username already taken";
 			} else {
-				$query = $this->mysqli->query("INSERT INTO users (`date`, `ip`, `username`, `password`) VALUES (\"" . date("n/j/Y g:i a") . "\", \"". $_SERVER['REMOTE_ADDR'] . "\", \"" . $username ."\", \"" . $password . "\");");
+				$query = $this->mysqli->query("INSERT INTO users (`date`, `ip`, `username`, `password`) VALUES (\"" . date("n/j/Y g:i a") . "\", \"". $_SERVER['HTTP_X_FORWARDED_FOR'] . "\", \"" . $username ."\", \"" . $password . "\");");
 				if ($query)
 				{
 					return true;
