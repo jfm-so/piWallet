@@ -17,7 +17,7 @@ function satoshitrim($satoshitrim) {
    return rtrim(rtrim($satoshitrim, "0"), ".");
 }
 
-$server_url = "https://dogecoinewallet.com";  // website url
+$server_url = "https://wallet.fitbobcat.com";  // website url
 
 $db_host = "localhost";
 $db_user = "root";
@@ -25,14 +25,14 @@ $db_pass = "password";
 $db_name = "wallet";
 
 $rpc_host = "localhost";
-$rpc_port = "22555";
-$rpc_user = "dogecoinrpc";
+$rpc_port = "8332";
+$rpc_user = "bitcoinrpc";
 $rpc_pass = "Cp68nBkCAADKkskaKSskaDKdmSYLtLJ";
 
-$fullname = "Dogecoin"; //Coin Name (Dogecoin)
-$short = "DOGE"; //Coin Short (DOGE)
-$blockchain_url = "http://dogechain.info/tx/"; //Blockchain Url
+$fullname = "Bitcoin"; //Website Title (Do Not include 'wallet')
+$short = "BTC"; //Coin Short (BTC)
+$blockchain_url = "http://blockchain.info/tx/"; //Blockchain Url
 
 $hide_ids = array(6); //Hide account from admin dashboard
-$donation_address = "DMnvFcv8QFcCHYJkaaJJQxLx1onPRKvhAB"; //Donation Address
+$donation_address = "13jy6rHB7HMgQBoYxQQXSM7TFTZZ6CDAAZ"; //Donation Address
 ?>
