@@ -12,8 +12,11 @@ Whats New:
 
 Planned Features:
 
+- Automatic Update Script
+- Control of Private Keys
 - 2fa Authentication
 - login ratelimiting 
 - Nicer Theme
 
-Donate: 13jy6rHB7HMgQBoYxQQXSM7TFTZZ6CDAAZ
+Donate: 
+13m4zfPFhYo16V8MGjSoN1EDspjDe9rtTL
