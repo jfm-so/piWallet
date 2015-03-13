@@ -104,7 +104,7 @@ $("#pwdform input[name='action']").first().attr("name", "jsaction");
 $("#donate").click(function (e){
   $("#donateinfo").show();
   $("#withdrawform input[name='address']").val("<?=$donation_address?>");
-  $("#withdrawform input[name='amount']").val("5.00");
+  $("#withdrawform input[name='amount']").val("0.01");
 });
 $("#withdrawform").submit(function(e)
 {
