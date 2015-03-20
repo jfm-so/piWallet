@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `admin` varchar(1) DEFAULT NULL,
   `locked` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=781 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `users`
