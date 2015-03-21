@@ -89,7 +89,7 @@ echo "<tr><td>".$address."</td></tr>\n";
                <td>'.abs($transaction['amount']).'</td>
                <td>'.$transaction['fee'].'</td>
                <td>'.$transaction['confirmations'].'</td>
-               <td><a href="' . sprintf($blockchain_url, $transaction['txid']) . '" target="_blank">Info</a></td>
+               <td><a href="' . $blockchain_url, $transaction['txid'] . '" target="_blank">Info</a></td>
             </tr>';
    }
    ?>
