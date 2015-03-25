@@ -7,18 +7,23 @@ if (!empty($error))
 ?>
 <p>Hello, <strong><?php echo $user_session; ?></strong>! <?php if ($admin) {?><strong><font color="red">[Admin]</font><?php }?></strong></p>
 <p>Current balance: <strong id="balance"><?php echo satoshitize($balance); ?></strong> <?=$short?></p>
+
 <form action="index.php" method="POST">
-	<input type="hidden" name="action" value="logout" />
-	<button type="submit" class="btn btn-default">Log out</button>
-</form>
+
 <?php
 if ($admin)
 {
   ?>
-  <a href="?a=home" class="btn btn-default">Go to admin home</a>
+<h4>Admin Links:</h4>
+  <a href="?a=home" class="btn btn-default">Admin Dashboard</a>
+<h4>User Links:</h4>
   <?php
 }
 ?>
+        <input type="hidden" name="action" value="logout" />
+        <button type="submit" class="btn btn-default">Log out</button>
+</form>
+
 <br />
 <p>Update your password:</p>
 <form action="index.php" method="POST" class="clearfix" id="pwdform">
