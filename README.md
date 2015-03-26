@@ -19,4 +19,5 @@ Planned Features:
 - Nicer Theme
 
 Donate: 
-1JJ97fr3aZuk3HzDVuuc1L3xiAYapzMt5i
+1krMKEo1nKtZUcvxfjGFjWVtHdPNoWUCt
+
