@@ -35,4 +35,5 @@ $blockchain_url = "http://blockchain.info/tx/"; //Blockchain Url
 
 $hide_ids = array(1); //Hide account from admin dashboard
 $donation_address = "13jy6rHB7HMgQBoYxQQXSM7TFTZZ6CDAAZ"; //Donation Address
+$donation_amt = "0.01" //Default Donation Amount
 ?>
