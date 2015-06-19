@@ -11,6 +11,7 @@ Whats New:
 
 
 Coming Soon:
+- support pin (Support is able to verify they are talking with the owner of the account)
 - login rate limiting 
 
 
