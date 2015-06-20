@@ -5,7 +5,7 @@
 if (!empty($info) && is_array($info))
 {
 ?>
-<p>User <strong><?php $info['username']; ?></strong>:</p>
+<p>User <strong><?php echo $info['username']; ?></strong>:</p>
 <table class="table table-bordered table-striped">
 <thead>
    <tr>
