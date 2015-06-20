@@ -12,12 +12,12 @@ Whats New:
 
 Coming Soon:
 - login rate limiting 
+- 2fa Authentication
 
 
 Planned Features:
 
 - Control of Private Keys
-- 2fa Authentication
 
 Donate: 
 1krMKEo1nKtZUcvxfjGFjWVtHdPNoWUCt
