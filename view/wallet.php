@@ -20,9 +20,15 @@ if ($admin)
   <?php
 }
 ?>
+<form>
         <input type="hidden" name="action" value="logout" />
-        <button type="submit" class="btn btn-default">Log out</button>
+        <button type="submit" class="btn btn-default">Logout</button>
 </form>
+<form action="index.php" method="POST">
+<input type="hidden" name="action" value="support" action="index.php"/>
+<button type="submit" class="btn btn-default">Support</button>
+</form>
+<br>
 
 <br />
 <p>Update your password:</p>

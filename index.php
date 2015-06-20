@@ -141,6 +141,11 @@ if (!empty($_SESSION['user_session']))
                session_destroy();
                header("Location: index.php");
                break;
+	    case "support":
+	 $error['message'] = "Please contact support via email at $support";
+                echo "Support Key: ";
+                echo $_SESSION['user_supportpin'];
+                break;
          }
       }
       $addressList = $client->getAddressList($user_session);
@@ -313,6 +318,7 @@ if (!empty($_SESSION['user_session']))
             } else {
                $_SESSION['user_session'] = $result['username'];
                $_SESSION['user_admin'] = $result['admin'];
+	       $_SESSION['user_supportpin'] = $result['supportpin'];
                header("Location: index.php");
             }
             break;
@@ -325,6 +331,7 @@ if (!empty($_SESSION['user_session']))
             } else {
                $username   = $mysqli->real_escape_string(   strip_tags(          $_POST['username']   ));
                $_SESSION['user_session'] = $username;
+              $_SESSION['user_supportpin'] = "Please relogin for Support Key";
                header("Location: index.php");
             }
             break;

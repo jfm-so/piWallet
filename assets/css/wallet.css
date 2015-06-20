@@ -68,3 +68,4 @@ body {
 		display: none;
 	}
 }
+form { display: inline; }
