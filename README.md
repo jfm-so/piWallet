@@ -14,6 +14,7 @@ Whats New:
 
 Coming Soon:
 - login rate limiting 
+- 2fa Authentication
 
 
 Planned Features:
