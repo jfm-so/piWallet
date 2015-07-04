@@ -28,6 +28,18 @@ if ($admin)
 <input type="hidden" name="action" value="support" action="index.php"/>
 <button type="submit" class="btn btn-default">Support</button>
 </form>
+
+<form action="index.php" method="POST">
+<form>
+<input type="hidden" name="action" value="authgen" />
+<button type="submit" class="btn btn-default">Enable 2 Factor Auth</button>
+</form><p>
+<form action="index.php" method="post">
+<form>
+<input type="hidden" name="action" value="disauth" />
+<button type="submit" class="btn btn-default">Disable 2 Factor Auth</button>
+</form>
+
 <br>
 
 <br />

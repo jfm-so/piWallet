@@ -11,6 +11,7 @@
                     <input type="hidden" name="action" value="login" />
                     <div class="col-md-2"><input type="text" class="form-control" name="username" placeholder="Username"></div>
                     <div class="col-md-2"><input type="password" class="form-control" name="password" placeholder="Password"></div>
+<div class="col-md-2"><input type "text" class="form-control" name="auth" placeholder="2factor Auth Code"></div>
                     <div class="col-md-2"><button type="submit" class="btn btn-default">Log in</button></div>
                 </form>
                 <br />
