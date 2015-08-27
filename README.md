@@ -14,8 +14,8 @@ Whats New:
 
 Coming Soon:
 - login rate limiting 
-- PoS Coin Support
-
+- Bug Fix: Prevent Over Withdrawing account because of TX Fee 
+- QR code support
 
 Planned Features:
 
