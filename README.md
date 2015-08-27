@@ -15,12 +15,12 @@ Whats New:
 Coming Soon:
 - login rate limiting 
 - Bug Fix: Prevent Over Withdrawing account because of TX Fee 
+- API
 - QR code support
 
 Planned Features:
 
 - Control of Private Keys
-- API
 
 Donate: 
 1krMKEo1nKtZUcvxfjGFjWVtHdPNoWUCt
