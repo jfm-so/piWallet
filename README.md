@@ -20,6 +20,7 @@ Coming Soon:
 Planned Features:
 
 - Control of Private Keys
+- API
 
 Donate: 
 1krMKEo1nKtZUcvxfjGFjWVtHdPNoWUCt
