@@ -25,5 +25,6 @@ Planned Features:
 - Control of Private Keys
 
 Donate: 
-1krMKEo1nKtZUcvxfjGFjWVtHdPNoWUCt
 
+1G8bNEm2VM3cReKWFdCQvJki3dbSbZgMHR
+PayPal: http://jmartin.me/pay
