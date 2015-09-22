@@ -17,7 +17,7 @@ Whats New:
 Coming Soon:
 
 - Bug Fix: Prevent Over Withdrawing account because of TX Fee 
-- API (before 2016)
+- API (In Development) View Documentation: https://github.com/johnathanmartin/piWallet/wiki/API
 
 
 Planned Features:
@@ -27,4 +27,5 @@ Planned Features:
 Donate: 
 
 1G8bNEm2VM3cReKWFdCQvJki3dbSbZgMHR
+
 PayPal: http://jmartin.me/pay
