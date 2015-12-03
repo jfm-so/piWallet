@@ -8,6 +8,8 @@ Setup: https://github.com/johnathanmartin/piWallet/wiki
 Bitcoin Talk: https://bitcointalk.org/index.php?topic=911212
 
 Whats New:
+- API - Currently we do not support sending funds or adding aditional addresses via API. View Documentation: https://github.com/johnathanmartin/piWallet/wiki/API
+
 - QR Codes for Addresses
 
 - Google 2 Factor Auth
@@ -17,15 +19,11 @@ Whats New:
 Coming Soon:
 
 - Bug Fix: Prevent Over Withdrawing account because of TX Fee 
-- API (In Development) View Documentation: https://github.com/johnathanmartin/piWallet/wiki/API
-
 
 Planned Features:
 
 - Control of Private Keys
 
-Donate: 
-
-1G8bNEm2VM3cReKWFdCQvJki3dbSbZgMHR
+Donate:
 
 PayPal: http://jmartin.me/pay

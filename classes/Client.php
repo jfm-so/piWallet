@@ -16,6 +16,11 @@ class Client {
 		//return 21;
 	}
 
+       function getAddress($user_session)
+        {
+                return $this->jsonrpc->getaccountaddress("zelles(" . $user_session . ")");
+	}
+
 	function getAddressList($user_session)
 	{
 		return $this->jsonrpc->getaddressesbyaccount("zelles(" . $user_session . ")");
