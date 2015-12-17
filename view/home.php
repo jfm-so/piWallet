@@ -1,4 +1,4 @@
-<?php if (!defined("IN_WALLET")) { die("u can't touch this."); } ?>
+<?php if (!defined("IN_WALLET")) { die("Auth Error"); } ?>
                 <h1>Welcome to <?=$fullname?> wallet!</h1>
                 <?php
                 if (!empty($error))

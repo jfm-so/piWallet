@@ -1,4 +1,4 @@
-<?php if (!defined("IN_WALLET")) { die("u can't touch this."); } ?>
+<?php if (!defined("IN_WALLET")) { die("Auth Error!"); } ?>
 <!DOCTYPE HTML>
 
 <html>

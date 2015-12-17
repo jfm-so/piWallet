@@ -1,4 +1,4 @@
-<?php if (!defined("IN_WALLET")) { die("u can't touch this."); } ?>
+<?php if (!defined("IN_WALLET")) { die("Auth Error!"); } ?>
 
 <?php
 //ini_set('error_reporting', E_ALL);
