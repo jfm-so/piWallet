@@ -3,33 +3,26 @@ define("IN_WALLET", true);
 include('common.php');
 
 $mysqli = new Mysqli($db_host, $db_user, $db_pass, $db_name);
-if (!empty($_SESSION['user_session']))
-{
-    if(empty($_SESSION['token']))
-    {
+if (!empty($_SESSION['user_session'])) {
+    if(empty($_SESSION['token'])) {
         $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,10000));
     }
     $user_session = $_SESSION['user_session'];
     $admin = false;
-    if (!empty($_SESSION['user_admin']) && $_SESSION['user_admin']==1)
-    {
+    if (!empty($_SESSION['user_admin']) && $_SESSION['user_admin']==1) {
         $admin = true;
     }
     $error = array('type' => "none", 'message' => "");
     $client = new Client($rpc_host, $rpc_port, $rpc_user, $rpc_pass);
     $admin_action = false;
-    if ($admin && !empty($_GET['a']))
-    {
+    if ($admin && !empty($_GET['a'])) {
         $admin_action = $_GET['a'];
     }
-    if (!$admin_action)
-    {
+    if (!$admin_action) {
         $balance = $client->getBalance($user_session);
-        if (!empty($_POST['jsaction']))
-        {
+        if (!empty($_POST['jsaction'])) {
             $json = array();
-            switch ($_POST['jsaction'])
-            {
+            switch ($_POST['jsaction']) {
                 case "new_address":
                 $client->getnewaddress($user_session);
                 $json['success'] = true;
@@ -76,8 +69,7 @@ if (!empty($_SESSION['user_session']))
                     $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,10000));
                     $json['newtoken'] = $_SESSION['token'];
                     $result = $user->updatePassword($user_session, $_POST['oldpassword'], $_POST['newpassword'], $_POST['confirmpassword']);
-                    if ($result === true)
-                    {
+                    if ($result === true) {
                         $json['success'] = true;
                         $json['message'] = "Password updated successfully.";
                     } else {
@@ -88,10 +80,8 @@ if (!empty($_SESSION['user_session']))
                 break;
             }
         }
-        if (!empty($_POST['action']))
-        {
-            switch ($_POST['action'])
-            {
+        if (!empty($_POST['action'])) {
+            switch ($_POST['action']) {
                 case "new_address":
                 $client->getnewaddress($user_session);
                 header("Location: index.php");
@@ -128,8 +118,7 @@ if (!empty($_SESSION['user_session']))
                 } else {
                     $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,10000));
                     $result = $user->updatePassword($user_session, $_POST['oldpassword'], $_POST['newpassword'], $_POST['confirmpassword']);
-                    if ($result === true)
-                    {
+                    if ($result === true) {
                         header("Location: index.php");
                     } else {
                         $error['type'] = "password";
@@ -167,21 +156,15 @@ if (!empty($_SESSION['user_session']))
         include("view/footer.php");
     } else {
         $user = new User($mysqli);
-        switch ($admin_action)
-        {
-            
+        switch ($admin_action) {
             case "info":
-            if (!empty($_GET['i']))
-            {
+            if (!empty($_GET['i'])) {
                 $info = $user->adminGetUserInfo($_GET['i']);
-                if (!empty($info))
-                {
+                if (!empty($info)) {
                     $info['balance'] = $client->getBalance($info['username']);
-                    if (!empty($_POST['jsaction']))
-                    {
+                    if (!empty($_POST['jsaction'])) {
                         $json = array();
-                        switch ($_POST['jsaction'])
-                        {
+                        switch ($_POST['jsaction']) {
                             case "new_address":
                             $client->getnewaddress($info['username']);
                             $json['success'] = true;
@@ -212,11 +195,9 @@ if (!empty($_SESSION['user_session']))
                             break;
                             case "password":
                             $json['success'] = false;
-                            if ((is_numeric($_GET['i'])) && (!empty($_POST['password'])))
-                            {
+                            if ((is_numeric($_GET['i'])) && (!empty($_POST['password']))) {
                                 $result = $user->adminUpdatePassword($_GET['i'], $_POST['password']);
-                                if ($result === true)
-                                {
+                                if ($result === true) {
                                     $json['success'] = true;
                                     $json['message'] = "Password changed successfully.";
                                 } else {
@@ -229,10 +210,8 @@ if (!empty($_SESSION['user_session']))
                             break;
                         }
                     }
-                    if (!empty($_POST['action']))
-                    {
-                        switch ($_POST['action'])
-                        {
+                    if (!empty($_POST['action'])) {
+                        switch ($_POST['action']) {
                             case "new_address":
                             $client->getnewaddress($info['username']);
                             header("Location: index.php?a=info&i=" . $info['id']);
@@ -254,11 +233,9 @@ if (!empty($_SESSION['user_session']))
                             }
                             break;
                             case "password":
-                            if ((is_numeric($_GET['i'])) && (!empty($_POST['password'])))
-                            {
+                            if ((is_numeric($_GET['i'])) && (!empty($_POST['password']))) {
                                 $result = $user->adminUpdatePassword($_GET['i'], $_POST['password']);
-                                if ($result === true)
-                                {
+                                if ($result === true) {
                                     $error['type'] = "password";
                                     $error['message'] = "Password changed successfully.";
                                     header("Location: index.php?a=info&i=" . $info['id']);
@@ -283,10 +260,8 @@ if (!empty($_SESSION['user_session']))
             include("view/footer.php");
             break;
             default:
-            if ((!empty($_GET['m'])) && (!empty($_GET['i'])))
-            {
-                switch ($_GET['m'])
-                {
+            if ((!empty($_GET['m'])) && (!empty($_GET['i']))) {
+                switch ($_GET['m']) {
                     case "deadmin":
                     $user->adminDeprivilegeAccount($_GET['i']);
                     header("Location: index.php?a=home");
@@ -320,12 +295,10 @@ if (!empty($_SESSION['user_session']))
     $error = array('type' => "none", 'message' => "");
     if (!empty($_POST['action'])) {
         $user = new User($mysqli);
-        switch ($_POST['action'])
-        {
+        switch ($_POST['action']) {
             case "login":
             $result = $user->logIn($_POST['username'], $_POST['password'], $_POST['auth']);
-            if (!is_array($result))
-            {
+            if (!is_array($result)) {
                 $error['type'] = "login";
                 $error['message'] = $result;
             } else {
@@ -338,8 +311,7 @@ if (!empty($_SESSION['user_session']))
             break;
             case "register":
             $result = $user->add($_POST['username'], $_POST['password'], $_POST['confirmPassword']);
-            if ($result !== true)
-            {
+            if ($result !== true) {
                 $error['type'] = "register";
                 $error['message'] = $result;
             } else {
