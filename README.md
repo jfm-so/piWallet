@@ -22,6 +22,8 @@ Coming Soon:
 
 Planned Features:
 
+- Improved Bootstrap Theme 
+
 - Control of Private Keys
 
 Donate:
