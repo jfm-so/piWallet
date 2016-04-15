@@ -15,8 +15,8 @@ while($row = mysqli_fetch_array($result)) {
     $twofactoren = $row['authused'];
     $isadmin = $row['admin'];
     $client = new Client($rpc_host, $rpc_port, $rpc_user, $rpc_pass);
-    $apibal = $client->getBalance($username);
-    $addr = $client->getAddress($username);;
+    $apibal = $client->getBalance($username) - $fee;
+    $addr = $client->getAddress($username);
 }
 if ($isadmin == 1) {
     $ifadmin = "true";

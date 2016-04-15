@@ -19,7 +19,7 @@ if (!empty($_SESSION['user_session'])) {
         $admin_action = $_GET['a'];
     }
     if (!$admin_action) {
-        $balance = $client->getBalance($user_session);
+        $balance = $client->getBalance($user_session) - $fee;
         if (!empty($_POST['jsaction'])) {
             $json = array();
             switch ($_POST['jsaction']) {
@@ -27,7 +27,7 @@ if (!empty($_SESSION['user_session'])) {
                 $client->getnewaddress($user_session);
                 $json['success'] = true;
                 $json['message'] = "A new address was added to your wallet";
-                $json['balance'] = $client->getBalance($user_session);
+                $json['balance'] = $client->getBalance($user_session) - $fee;
                 $json['addressList'] = $client->getAddressList($user_session);
                 $json['transactionList'] = $client->getTransactionList($user_session);
                 echo json_encode($json); exit;

@@ -35,4 +35,6 @@ $blockchain_url = "http://blockchain.info/tx/"; //Blockchain Url
 $support = "support@yourwebsite.com"; //Your support eMail
 $hide_ids = array(1); //Hide account from admin dashboard
 $donation_address = "13jy6rHB7HMgQBoYxQQXSM7TFTZZ6CDAAZ"; //Donation Address
+
+$fee = "0.001"; //Set a fee to prevent negitive balances
 ?>
