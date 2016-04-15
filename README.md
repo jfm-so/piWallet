@@ -16,9 +16,6 @@ Whats New:
 
 - [Support Pin](https://github.com/johnathanmartin/piWallet/wiki/Support-Pin)
 
-Coming Soon:
-
-- Bug Fix: Prevent Over Withdrawing account because of TX Fee 
 
 Planned Features:
 
