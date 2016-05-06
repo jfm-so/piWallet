@@ -18,6 +18,7 @@ Whats New:
 
 
 Planned Features:
+- Have QR Codes open in lightbox instead of new tab
 
 - Improved Bootstrap Theme 
 
