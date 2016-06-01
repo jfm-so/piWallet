@@ -22,46 +22,32 @@ class User {
 	function logIn($username, $password)
 
 	{
-
 		if (empty($username) || empty($password))
 
 		{
-
 			return false;
-
-		} else {
-$auth=$_POST['auth'];
-
-
-
+		} 
+		else {
+			$auth=$_POST['auth'];
 			$username = $this->mysqli->real_escape_string(strip_tags($username));
-
-        	$password = md5(addslashes(strip_tags($password	))); 
-$auth		= $this->mysqli->real_escape_string(	strip_tags(	$auth));
-
-        	$result	= $this->mysqli->query("SELECT * FROM users WHERE username='" . $username . "'");
-
-
-
-        	$user = $result->fetch_assoc();
-$secret = $user['secret'];
-$oneCode = $this->getCode($secret);
+      		  	$password = md5(addslashes(strip_tags($password	))); 
+			$auth = $this->mysqli->real_escape_string(	strip_tags(	$auth));
+        		$result	= $this->mysqli->query("SELECT * FROM users WHERE username='" . $username . "'");
+                 	$user = $result->fetch_assoc();
+                        $secret = $user['secret'];
+                        $oneCode = $this->getCode($secret);
 
         	if (($user) && ($user['password'] == $password) && ($user['locked'] == 0) && ($user['authused'] == 0))
         	{
-
         		return $user;
-
-        	} elseif (($user) && ($user['password'] == $password) && ($user['locked'] == 1)) {
-$pin = $user['supportpin'];
+        	} 
+		elseif (($user) && ($user['password'] == $password) && ($user['locked'] == 1)) {
+			$pin = $user['supportpin'];
         		return "Account is locked. Contact support for more information. $pin";
-
 }
 
- elseif (($user) && ($user['password'] == $password) && ($user['locked'] == 0) && ($user['authused'] == 1 && ($oneCode == $_POST['auth'])))  {
-return $user;
-
-
+ 		elseif (($user) && ($user['password'] == $password) && ($user['locked'] == 0) && ($user['authused'] == 1 && ($oneCode == $_POST['auth'])))  {
+			return $user;
 
         	} else {
 
@@ -107,9 +93,9 @@ return $user;
 
 			//Let's do a database check
 
-			$username	= $this->mysqli->real_escape_string(	strip_tags(				$username	));
+			$username = $this->mysqli->real_escape_string(strip_tags($username));
 
-        	$password	= md5(									addslashes(	strip_tags(	$password	)));
+        	$password = md5(addslashes(strip_tags($password)));
 
 			$user = $this->mysqli->query("SELECT * FROM users WHERE username='" . $username . "'");
 
@@ -121,56 +107,37 @@ return $user;
 
 			} else {
 
-$query = $this->mysqli->query("INSERT INTO users (`date`, `ip`, `username`, `password`, `supportpin`) VALUES (\"" . date("n/j/Y g:i a") . "\", \"". $_SERVER['HTTP_X_FORWARDED_FOR'] . "\", \"" . $username ."\", \"" . $password . "\", \"". rand(10000,99999) . "\");");				
+				$query = $this->mysqli->query("INSERT INTO users (`date`, `ip`, `username`, `password`, `supportpin`) VALUES (\"" . date("n/j/Y g:i a") . "\", \"". $_SERVER['HTTP_X_FORWARDED_FOR'] . "\", \"" . $username ."\", \"" . $password . "\", \"". rand(10000,99999) . "\");");				
 
 				if ($query)
-
 				{
 
 					return true;
-
 				} else {
-
 					return "System error";
 
 				}
 
 			}
-
 		}
-
 	}
-
 
 
 	function updatePassword($user_session, $oldPassword, $newPassword, $confirmPassword)
 
 	{
-
 		global $hide_ids;
-
 		if ($newPassword != $confirmPassword)
-
 		{
-
 			return "Passwords did not match.";
-
 		} else {
-
 			//Get old password
-
 			$result = $this->mysqli->query("SELECT * FROM users WHERE username='" . $user_session . "'");
-
 			if ($result->num_rows > 0)
-
 			{
-
 				$user = $result->fetch_assoc();
-
-				$oldPassword = md5(addslashes(strip_tags(		$oldPassword		)));
-
-				$newPassword = md5(addslashes(strip_tags(		$newPassword		)));
-
+				$oldPassword = md5(addslashes(strip_tags($oldPassword)));
+				$newPassword = md5(addslashes(strip_tags($newPassword)));
 				if ($user['password'] != $oldPassword)
 
 				{
@@ -204,14 +171,7 @@ $query = $this->mysqli->query("INSERT INTO users (`date`, `ip`, `username`, `pas
 		}
 
 	}
-
-
-
-
-
-
                      
-
 
 	function adminGetUserList()
 
@@ -226,217 +186,128 @@ $query = $this->mysqli->query("INSERT INTO users (`date`, `ip`, `username`, `pas
 		while ($user = $users->fetch_assoc())
 
 		{
-
 			if (!in_array($user['id'], $hide_ids))
 
 			{
-
 				$return[] = $user;
-
 			}
-
 		}
-
 		return $return;
-
 	}
-
-	
-
 
 
 	function adminGetUserInfo($id)
-
 	{
-
 		global $hide_ids;
-
 		if (is_numeric($id) && !in_array($id, $hide_ids))
-
 		{
-
 			$users = $this->mysqli->query("SELECT * FROM users WHERE id=" . $id);
-
 			if ($users->num_rows > 0)
-
 			{
-
 				return $users->fetch_assoc();
-
 			} else {
-
 				return false;
-
 			}
-
 		} else {
-
 			return false;
-
 		}
-
 	}
-
 
 
 	function adminUpdatePassword($id, $newPassword)
-
 	{
-
 		global $hide_ids;
-
-        $password	= md5(									addslashes(	strip_tags(	$newPassword	)));
-
+        	$password = md5(addslashes(strip_tags($newPassword)));
 		if (is_numeric($id) && !in_array($id, $hide_ids))
-
 		{
-
 			$result = $this->mysqli->query("UPDATE users SET password='" . $password . "' WHERE id=" . $id . ";");
-
 			if ($result)
-
 			{
-
 				return true;
-
 			} else {
-
 				return "Error.";
-
 			}
-
 		} else {
-
 			return "User does not exist";
-
 		}
-
 	}
-
-
 
 	function enableauth()
 
 	{
 
 	//	global $hide_ids;
-$id=$_SESSION['user_id'];
-$secret=$this->createSecret();
-$qrcode=$this->getQRCodeGoogleUrl('Wallet', $secret);
-$oneCode = $this->getCode($secret);
-
+		$id=$_SESSION['user_id'];
+		$secret=$this->createSecret();
+		$qrcode=$this->getQRCodeGoogleUrl('Wallet', $secret);
+		$oneCode = $this->getCode($secret);
 
 		if (($id)) 
-
 		{  
-	 
-$msg = "Secret Key: $secret *Please write this down and keep in a secure area*<br><img src='$qrcode'<br>Please scan this with the Google Authenticator app on your mobile phone. This page will clear on refresh, please be careful.";
-
-$this->mysqli->query("UPDATE users SET authused=1, secret='" . $secret . "' WHERE id=" . $id); return "$msg";
-
+			$msg = "Secret Key: $secret *Please write this down and keep in a secure area*<br><img src='$qrcode'<br>Please scan this with the Google Authenticator app on your mobile phone. This page will clear on refresh, please be careful.";
+			$this->mysqli->query("UPDATE users SET authused=1, secret='" . $secret . "' WHERE id=" . $id); return "$msg";
 		}
-
 	}
 
       function disauth()
               {
-      $id=$_SESSION['user_id'];
-      if (($id))
-      {
-
-$msg = "Two Factor Auth has been disabled for your account and will no longer be required when you sign in.";
-
-$this->mysqli->query("UPDATE users SET authused=0, secret='' WHERE id=" . $id); return "$msg";
-}
-}
-
+     		 $id=$_SESSION['user_id'];
+    		  if (($id))
+     		 {
+			$msg = "Two Factor Auth has been disabled for your account and will no longer be required when you sign in.";
+			$this->mysqli->query("UPDATE users SET authused=0, secret='' WHERE id=" . $id); return "$msg";
+	         }
+              }
 
    function adminDeleteAccount($id)
 
         {
-
                 global $hide_ids;
-
                 if (is_numeric($id) && !in_array($id, $hide_ids))
-
                 {
-
                         $this->mysqli->query("DELETE FROM users WHERE id=" . $id);
-
                 }
-
         }
-
 
 	function adminLockAccount($id)
 
 	{
-
 		global $hide_ids;
-
 		if (is_numeric($id) && !in_array($id, $hide_ids))
-
 		{
-
 			$users = $this->mysqli->query("UPDATE users SET locked=1 WHERE id=" . $id);
-
 		}
-
 	}
-
-
 
 	function adminUnlockAccount($id)
 
 	{
-
 		global $hide_ids;
-
 		if (is_numeric($id) && !in_array($id, $hide_ids))
-
 		{
-
 			$users = $this->mysqli->query("UPDATE users SET locked=0 WHERE id=" . $id);
-
 		}
-
 	}
-
-
 
 	function adminPrivilegeAccount($id)
-
 	{
-
 		global $hide_ids;
-
 		if (is_numeric($id) && !in_array($id, $hide_ids))
-
 		{
-
 			$users = $this->mysqli->query("UPDATE users SET admin=1 WHERE id=" . $id);
-
 		}
-
 	}
-
-
 
 	function adminDeprivilegeAccount($id)
-
 	{
-
 		global $hide_ids;
-
 		if (is_numeric($id) && !in_array($id, $hide_ids))
 
 		{
-
 			$users = $this->mysqli->query("UPDATE users SET admin=0 WHERE id=" . $id);
-
 		}
-
 	}
+
 //GoogleAuthenticator 
 //Created by PHPGangsta
 
