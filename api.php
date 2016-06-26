@@ -1,5 +1,5 @@
 <?php
-define("IN_WALLET", true);
+define("IN_WALLET", false);
 include('common.php');
 $con = mysqli_connect("$db_host","$db_user","$db_pass","$db_name");
 $key = $_GET['key'];
