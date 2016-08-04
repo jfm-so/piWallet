@@ -1,5 +1,8 @@
 <?php
-define("IN_WALLET", false);
+#API IS DISABLED BY DEFAULT AS ITS STILL IN DEV. ENABLE AT YOUR OWN RISK.
+define("IN_WALLET", false); #TO ENABLE SET TO TRUE
+###################################################
+
 include('common.php');
 $con = mysqli_connect("$db_host","$db_user","$db_pass","$db_name");
 $key = $_GET['key'];
