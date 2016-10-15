@@ -1,4 +1,4 @@
-<?php if (!defined("IN_WALLET")) { die("u can't touch this."); } ?>
+<?php if (!defined("IN_WALLET")) { die("Auth Error!"); } ?>
 <a href="?a=home" class="btn btn-default">Go back to admin home</a>
 <br /><br />
 <?php

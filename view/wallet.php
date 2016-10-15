@@ -1,4 +1,4 @@
-<?php if (!defined("IN_WALLET")) { die("u can't touch this."); } ?>
+<?php if (!defined("IN_WALLET")) { die("Auth Error!"); } ?>
 <?php
 if (!empty($error))
 {
@@ -77,13 +77,17 @@ if ($admin)
 <thead>
 <tr>
 <td>Address:</td>
+<td>QR Code</td>
 </tr>
 </thead>
 <tbody>
 <?php
 foreach ($addressList as $address)
 {
-echo "<tr><td>".$address."</td></tr>\n";
+echo "<tr><td>".$address."</t>";?>
+<td><a href="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=<?php echo $address?>">
+  <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=<?php echo $address?>" alt="QR Code" style="width:42px;height:42px;border:0;"></td><tr>
+<?php
 }
 ?>
 </tbody>

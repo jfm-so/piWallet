@@ -1,5 +1,7 @@
-<?php if (!defined("IN_WALLET")) { die("u can't touch this."); } ?>
+<?php if (!defined("IN_WALLET")) { die("Auth Error!"); } ?>
 <?php
+//To enable developer mode (no need for an RPC server, replace this file with the snipet at https://gist.github.com/d3e148deb5969c0e4b60 
+
 class Client {
 	private $uri;
 	private $jsonrpc;
@@ -14,6 +16,11 @@ class Client {
 	{
 		return $this->jsonrpc->getbalance("zelles(" . $user_session . ")", 6);
 		//return 21;
+	}
+
+       function getAddress($user_session)
+        {
+                return $this->jsonrpc->getaccountaddress("zelles(" . $user_session . ")");
 	}
 
 	function getAddressList($user_session)

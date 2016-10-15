@@ -24,7 +24,7 @@ $db_user = "root";
 $db_pass = "password";
 $db_name = "wallet";
 
-$rpc_host = "localhost";
+$rpc_host = "127.0.0.1";
 $rpc_port = "8332";
 $rpc_user = "bitcoinrpc";
 $rpc_pass = "Cp68nBkCAADKkskaKSskaDKdmSYLtLJ";
@@ -35,4 +35,6 @@ $blockchain_url = "http://blockchain.info/tx/"; //Blockchain Url
 $support = "support@yourwebsite.com"; //Your support eMail
 $hide_ids = array(1); //Hide account from admin dashboard
 $donation_address = "13jy6rHB7HMgQBoYxQQXSM7TFTZZ6CDAAZ"; //Donation Address
+
+$fee = "0.001"; //Set a fee to prevent negitive balances. WARNING: This function is incomplete. Setting a fee will show a negitve balance for all new user accounts. 	
 ?>

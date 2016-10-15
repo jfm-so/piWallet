@@ -8,20 +8,22 @@ Setup: https://github.com/johnathanmartin/piWallet/wiki
 Bitcoin Talk: https://bitcointalk.org/index.php?topic=911212
 
 Whats New:
+- API - Currently we do not support sending funds or adding aditional addresses via API. View Documentation: https://github.com/johnathanmartin/piWallet/wiki/API
+
+- QR Codes for Addresses
+
 - Google 2 Factor Auth
 
-- Support Pin - A support button has been added that gives instructions to email the wallet's support team. In additon, a Support Key is shown in the top left corner. The support key is unique to there account and can be used to verify the the owner of that account. The support key changes if the user resets his/her password.
+- [Support Pin](https://github.com/johnathanmartin/piWallet/wiki/Support-Pin)
 
-Coming Soon:
-- login rate limiting 
-- Bug Fix: Prevent Over Withdrawing account because of TX Fee 
-- API
-- QR code support
 
 Planned Features:
+- Have QR Codes open in lightbox instead of new tab
+
+- Improved Bootstrap Theme 
 
 - Control of Private Keys
 
-Donate: 
-1krMKEo1nKtZUcvxfjGFjWVtHdPNoWUCt
+Donate:
 
+PayPal: http://jmartin.me/pay
