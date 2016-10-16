@@ -5,79 +5,87 @@ if (!empty($error))
     echo "<p style='font-weight: bold; color: red;'>" . $error['message']; "</p>";
 }
 ?>
-<p>Hello, <strong><?php echo $user_session; ?></strong>! <?php if ($admin) {?><strong><font color="red">[Admin]</font><?php }?></strong></p>
-<p>Current balance: <strong id="balance"><?php echo satoshitize($balance); ?></strong> <?=$short?></p>
+<p><?php echo $lang['WALLET_HELLO']; ?>, <strong><?php echo $user_session; ?></strong>!  <?php if ($admin) {?><strong><font color="red">[Admin]</font><?php }?></strong></p>
+<p><?php echo $lang['WALLET_BALANCE']; ?> <strong id="balance"><?php echo satoshitize($balance); ?></strong> <?=$short?></p>
 
 <form action="index.php" method="POST">
 
+br />
 <?php
 if ($admin)
 {
   ?>
-<h4>Admin Links:</h4>
+<p><strong>Admin Links:</strong></p>
   <a href="?a=home" class="btn btn-default">Admin Dashboard</a>
-<h4>User Links:</h4>
+
+<br />
+<br />
+<p><strong><?php echo $lang['WALLET_USERLINKS']; ?></strong></p>
   <?php
 }
 ?>
 <form>
         <input type="hidden" name="action" value="logout" />
-        <button type="submit" class="btn btn-default">Logout</button>
+        <button type="submit" class="btn btn-default"><?php echo $lang['WALLET_LOGOUT']; ?></button>
 </form>
 <form action="index.php" method="POST">
 <input type="hidden" name="action" value="support" action="index.php"/>
-<button type="submit" class="btn btn-default">Support</button>
+<button type="submit" class="btn btn-default"><?php echo $lang['WALLET_SUPPORT']; ?></button>
 </form>
 
 <form action="index.php" method="POST">
 <form>
 <input type="hidden" name="action" value="authgen" />
-<button type="submit" class="btn btn-default">Enable 2 Factor Auth</button>
+<button type="submit" class="btn btn-default"><?php echo $lang['WALLET_2FAON']; ?></button>
 </form><p>
 <form action="index.php" method="post">
 <form>
 <input type="hidden" name="action" value="disauth" />
-<button type="submit" class="btn btn-default">Disable 2 Factor Auth</button>
+<button type="submit" class="btn btn-default"><?php echo $lang['WALLET_2FAOFF']; ?></button>
 </form>
 
 <br>
 
 <br />
-<p>Update your password:</p>
+
+<br />
+<p><strong><?php echo $lang['WALLET_PASSUPDATE']; ?></strong></p>
 <form action="index.php" method="POST" class="clearfix" id="pwdform">
     <input type="hidden" name="action" value="password" />
     <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
-    <div class="col-md-2"><input type="password" class="form-control" name="oldpassword" placeholder="Current password"></div>
-    <div class="col-md-2"><input type="password" class="form-control" name="newpassword" placeholder="New password"></div>
-    <div class="col-md-2"><input type="password" class="form-control" name="confirmpassword" placeholder="Confirm new password"></div>
-    <div class="col-md-2"><button type="submit" class="btn btn-default">Update password</button></div>
+    <div class="col-md-2"><input type="password" class="form-control" name="oldpassword" placeholder="<?php echo $lang['WALLET_PASSUPDATEOLD']; ?>"></div>
+    <div class="col-md-2"><input type="password" class="form-control" name="newpassword" placeholder="<?php echo $lang['WALLET_PASSUPDATENEW']; ?>"></div>
+    <div class="col-md-2"><input type="password" class="form-control" name="confirmpassword" placeholder="<?php echo $lang['WALLET_PASSUPDATENEWCONF']; ?>"></div>
+    <div class="col-md-2"><button type="submit" class="btn btn-default"><?php echo $lang['WALLET_PASSUPDATECONF']; ?></button></div>
 </form>
 <p id="pwdmsg"></p>
 <br />
-<p>Withdraw funds:</p>
+<p style="font-size:1em;"><?php echo $lang['WALLET_SUPPORTNOTE']; ?></p>
+<br />
+<p><strong><?php echo $lang['WALLET_SEND']; ?></strong></p>
 <button type="button" class="btn btn-default" id="donate">Donate to <?=$fullname?> wallet's owner!</button><br />
 <p id="donateinfo" style="display: none;">Type the amount you want to donate and click <strong>Withdraw</strong></p>
 <form action="index.php" method="POST" class="clearfix" id="withdrawform">
     <input type="hidden" name="action" value="withdraw" />
     <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
-    <div class="col-md-4"><input type="text" class="form-control" name="address" placeholder="Address"></div>
-    <div class="col-md-2"><input type="text" class="form-control" name="amount" placeholder="Amount"></div>
-    <div class="col-md-2"><button type="submit" class="btn btn-default">Withdraw</button></div>
+    <div class="col-md-4"><input type="text" class="form-control" name="address" placeholder="<?php echo $lang['WALLET_ADDRESS']; ?>"></div>
+    <div class="col-md-2"><input type="text" class="form-control" name="amount" placeholder="<?php echo $lang['WALLET_AMOUNT']; ?>"></div>
+    <div class="col-md-2"><button type="submit" class="btn btn-default"><?php echo $lang['WALLET_SENDCONF']; ?></button></div>
 </form>
 <p id="withdrawmsg"></p>
 <br />
-<p>Your addresses:</p>
+<p><strong><?php echo $lang['WALLET_USERADDRESSES']; ?></strong></p>
 <form action="index.php" method="POST" id="newaddressform">
 	<input type="hidden" name="action" value="new_address" />
-	<button type="submit" class="btn btn-default">Get a new address</button>
+	<button type="submit" class="btn btn-default"><?php echo $lang['WALLET_NEWADDRESS']; ?></button>
 </form>
 <p id="newaddressmsg"></p>
 <br />
 <table class="table table-bordered table-striped" id="alist">
 <thead>
 <tr>
-<td>Address:</td>
-<td>QR Code</td>
+<td><?php echo $lang['WALLET_ADDRESS']; ?>:</td>
+<td><?php echo $lang['WALLET_QRCODE']; ?>:</td>
 </tr>
 </thead>
 <tbody>
@@ -92,17 +100,17 @@ echo "<tr><td>".$address."</t>";?>
 ?>
 </tbody>
 </table>
-<p>Last 10 transactions:</p>
+<p><?php echo $lang['WALLET_LAST10']; ?></p>
 <table class="table table-bordered table-striped" id="txlist">
 <thead>
    <tr>
-      <td nowrap>Date</td>
-      <td nowrap>Address</td>
-      <td nowrap>Type</td>
-      <td nowrap>Amount</td>
-      <td nowrap>Fee</td>
-      <td nowrap>Confs</td>
-      <td nowrap>Info</td>
+      <td nowrap><?php echo $lang['WALLET_DATE']; ?></td>
+      <td nowrap><?php echo $lang['WALLET_ADDRESS']; ?></td>
+      <td nowrap><?php echo $lang['WALLET_TYPE']; ?></td>
+      <td nowrap><?php echo $lang['WALLET_AMOUNT']; ?></td>
+      <td nowrap><?php echo $lang['WALLET_FEE']; ?></td>
+      <td nowrap><?php echo $lang['WALLET_CONFS']; ?></td>
+      <td nowrap><?php echo $lang['WALLET_INFO']; ?></td>
    </tr>
 </thead>
 <tbody>
