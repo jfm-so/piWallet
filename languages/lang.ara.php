@@ -5,7 +5,6 @@ Language: Arabic
 ------------------
 */
 
-include('common.php');
 $lang = array();
 
 //Home Page

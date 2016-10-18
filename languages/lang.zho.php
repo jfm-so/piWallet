@@ -5,7 +5,6 @@ Language: Mandarin
 ------------------
 */
 
-include('common.php');
 $lang = array();
 
 //Home Page

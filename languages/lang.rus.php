@@ -5,7 +5,6 @@ Language: Russian
 ------------------
 */
 
-include('common.php');
 $lang = array();
 
 //Home Page

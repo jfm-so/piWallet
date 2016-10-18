@@ -5,7 +5,6 @@ Language: Japanese
 ------------------
 */
 
-include('common.php');
 $lang = array();
 
 //Home Page

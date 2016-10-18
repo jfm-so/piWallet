@@ -5,7 +5,6 @@ Language: German
 ------------------
 */
 
-include('common.php');
 $lang = array();
 
 //Home Page

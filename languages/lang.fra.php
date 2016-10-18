@@ -5,7 +5,6 @@ Language: French
 ------------------
 */
 
-include('common.php');
 $lang = array();
 
 //Home Page
