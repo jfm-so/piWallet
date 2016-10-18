@@ -80,6 +80,51 @@
 									<span class="lang-sm"></span>Tagalog
 								</a>
 							</li>
+							<li>
+								<a href="index.php?lang=rus">
+									<span class="lang-sm lang-lbl" lang="ru"></span>
+								</a>
+							</li>
+							<li>
+								<a href="index.php?lang=nld">
+									<span class="lang-sm lang-lbl" lang="nl"></span>
+								</a>
+							</li>
+							<li>
+								<a href="index.php?lang=fra">
+									<span class="lang-sm lang-lbl" lang="fr"></span>
+								</a>
+							</li>
+							<li>
+								<a href="index.php?lang=deu">
+									<span class="lang-sm lang-lbl" lang="de"></span>
+								</a>
+							</li>
+							<li>
+								<a href="index.php?lang=tur">
+									<span class="lang-sm lang-lbl" lang="tr"></span>
+								</a>
+							</li>
+							<li>
+								<a href="index.php?lang=vie">
+									<span class="lang-sm lang-lbl" lang="vi"></span>
+								</a>
+							</li>
+							<li>
+								<a href="index.php?lang=jpn">
+									<span class="lang-sm lang-lbl" lang="ja"></span>
+								</a>
+							</li>
+							<li>
+								<a href="index.php?lang=kor">
+									<span class="lang-sm lang-lbl" lang="ko"></span>
+								</a>
+							</li>
+							<li>
+								<a href="index.php?lang=ara">
+									<span class="lang-sm lang-lbl" lang="ar"></span>
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>
