@@ -5,7 +5,6 @@ Language: Greek
 ------------------
 */
 
-include('common.php');
 $lang = array();
 
 //Home Page

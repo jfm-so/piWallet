@@ -5,7 +5,6 @@ Language: Spanish
 ------------------
 */
 
-include('common.php');
 $lang = array();
 
 //Home Page

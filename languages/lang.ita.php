@@ -5,7 +5,6 @@ Language: Italian
 ------------------
 */
 
-include('common.php');
 $lang = array();
 
 //Home Page

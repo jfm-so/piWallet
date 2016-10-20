@@ -5,7 +5,6 @@ Language: Tagalog/ English
 ------------------
 */
 
-include('common.php');
 $lang = array();
 
 //Home Page

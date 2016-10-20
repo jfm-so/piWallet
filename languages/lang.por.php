@@ -5,7 +5,6 @@ Language: Portuguese
 ------------------
 */
 
-include('common.php');
 $lang = array();
 
 //Home Page
