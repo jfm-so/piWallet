@@ -5,7 +5,7 @@ define("IN_WALLET", false); #TO ENABLE SET TO TRUE
 
 include('common.php');
 $con = mysqli_connect("$db_host","$db_user","$db_pass","$db_name");
-$key = $_GET['key'];
+$key = mysqli_real_escape_string($con, $_GET['key']);
 if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL. Make sure to edit the common.php file: " . mysqli_connect_error();
 }
