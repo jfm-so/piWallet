@@ -8,6 +8,8 @@ Setup: https://github.com/johnathanmartin/piWallet/wiki
 Bitcoin Talk: https://bitcointalk.org/index.php?topic=911212
 
 Whats New:
+- QR Codes use a local generation URL 
+
 - Multilanguage support for over 90% of text - Currently supported languages include English, Greek, Mandarin, Hindi, Italian, Portuguese, Spanish, and Tagalog.
 
 - API - Currently we do not support sending funds or adding aditional addresses via API. View Documentation: https://github.com/johnathanmartin/piWallet/wiki/API
@@ -28,4 +30,4 @@ Planned Features:
 
 Donate:
 
-PayPal: http://jmartin.me/pay
+1LXEEZefwFKBC86oLndPuu7fLJre97Xtyu

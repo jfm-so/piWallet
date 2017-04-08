@@ -93,8 +93,8 @@ if ($admin)
 foreach ($addressList as $address)
 {
 echo "<tr><td>".$address."</t>";?>
-<td><a href="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=<?php echo $address?>">
-  <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=<?php echo $address?>" alt="QR Code" style="width:42px;height:42px;border:0;"></td><tr>
+<td><a href="<?php echo $server_url;?>qrgen/?addrss=<?php echo $address;?>">
+  <img src="<?php echo $server_url;?>qrgen/?address=<?php echo $address;?>" alt="QR Code" style="width:42px;height:42px;border:0;"></td><tr>
 <?php
 }
 ?>

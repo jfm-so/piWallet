@@ -18,7 +18,7 @@ function satoshitrim($satoshitrim) {
    return rtrim(rtrim($satoshitrim, "0"), ".");
 }
 
-$server_url = "/";  // website url
+$server_url = "/";  // ENTER WEBSITE URL ALONG WITH A TRAILING SLASH
 
 $db_host = "localhost";
 $db_user = "root";
