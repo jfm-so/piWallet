@@ -10,7 +10,7 @@ if (!empty($error))
 
 <form action="index.php" method="POST">
 
-br />
+<br />
 <?php
 if ($admin)
 {
@@ -93,7 +93,7 @@ if ($admin)
 foreach ($addressList as $address)
 {
 echo "<tr><td>".$address."</t>";?>
-<td><a href="<?php echo $server_url;?>qrgen/?addrss=<?php echo $address;?>">
+<td><a href="<?php echo $server_url;?>qrgen/?address=<?php echo $address;?>">
   <img src="<?php echo $server_url;?>qrgen/?address=<?php echo $address;?>" alt="QR Code" style="width:42px;height:42px;border:0;"></td><tr>
 <?php
 }
