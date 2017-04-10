@@ -10,7 +10,6 @@ if (!empty($error))
 
 <form action="index.php" method="POST">
 
-br />
 <?php
 if ($admin)
 {
