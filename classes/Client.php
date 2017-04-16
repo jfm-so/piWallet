@@ -18,7 +18,7 @@ class Client {
 		//return 21;
 	}
 
-       function getAddress($user_session)
+        function getAddress($user_session)
         {
                 return $this->jsonrpc->getaccountaddress("zelles(" . $user_session . ")");
 	}
@@ -32,6 +32,14 @@ class Client {
 	function getTransactionList($user_session)
 	{
 		return $this->jsonrpc->listtransactions("zelles(" . $user_session . ")", 10);
+		// 10 can be changed to 1000 if you would like to display ALL (1000) of the users last transaction
+		// return $this->jsonrpc->listtransactions("zelles(" . $user_session . ")", 1000);
+	}
+				
+	function getLastTransaction($user_session)
+	{
+		return $this->jsonrpc->listtransactions("zelles(" . $user_session . ")", 1);
+		// this is used to display the transaction that was just made by user_session after a withdraw success
 	}
 
 	function getNewAddress($user_session)
@@ -44,6 +52,12 @@ class Client {
 	{
 		return $this->jsonrpc->sendfrom("zelles(" . $user_session . ")", $address, (float)$amount, 6);
 		//return "ok wow";
+	}
+	
+	function importPrivKey($importedkey,$user_session)
+	{
+		return $this->jsonrpc->importprivkey($importedkey, "zelles(" . $user_session . ")");
+		//we can use this to import the users privkey into their wallet
 	}
 }
 ?>
