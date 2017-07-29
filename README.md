@@ -3,7 +3,7 @@ piWallet
 
 piWallet is a secure opensource online altcoin wallet that works with practically any altcoin. piWallet uses PHP, mySQL, JavaScript and Bootstrap. 
 
-Setup: https://github.com/johnathanmartin/piWallet/wiki
+Setup: https://github.com/johnathanmartin/piWallet/wiki/Installation
 
 Bitcoin Talk: https://bitcointalk.org/index.php?topic=911212
 
