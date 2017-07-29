@@ -1,4 +1,8 @@
 <?php
+//ini_set('display_startup_errors',1);
+//ini_set('display_errors',1);
+//error_reporting(-1);
+
 session_start();
 header('Cache-control: private'); // IE 6 FIX
 
@@ -37,7 +41,7 @@ $support = "support@yourwebsite.com"; //Your support eMail
 $hide_ids = array(1); //Hide account from admin dashboard
 $donation_address = "13jy6rHB7HMgQBoYxQQXSM7TFTZZ6CDAAZ"; //Donation Address
 
-$fee = "0"; //Set a fee to prevent negitive balances. WARNING: This function is incomplete. Setting a fee will show a negitve balance for all new user accounts.
+$reserve = "0"; //This fee acts as a reserve. The users balance will display as the balance in the daemon minus the reserve. We don't reccomend setting this more than the Fee the daemon charges.
 
 if(isSet($_GET['lang']))
 {

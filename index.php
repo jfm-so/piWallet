@@ -19,15 +19,27 @@ if (!empty($_SESSION['user_session'])) {
         $admin_action = $_GET['a'];
     }
     if (!$admin_action) {
-        $balance = $client->getBalance($user_session) - $fee;
-        if (!empty($_POST['jsaction'])) {
+        $noresbal = $client->getBalance($user_session);
+        $resbalance = $client->getBalance($user_session) - $reserve;
+	if ($resbalance < 0) {
+		$balance = $noresbal; //Don't show the user a negitive balance if they have no coins with us
+	} else {
+		$balance = $resbalance;
+	}
+	if (!empty($_POST['jsaction'])) {
             $json = array();
             switch ($_POST['jsaction']) {
                 case "new_address":
                 $client->getnewaddress($user_session);
                 $json['success'] = true;
                 $json['message'] = "A new address was added to your wallet";
-                $json['balance'] = $client->getBalance($user_session) - $fee;
+		$jsonbal = $client->getBalance($user_session);
+		$jsonbalreserve = $client->getBalance($user_session) - $reserve;
+                if ($jsonbalreserve < 0) {
+			$json['balance'] = $jsonbal; 
+		} else {
+			$json['balance'] = $jsonbalreserve; }
+		$json['balance'] = $jsonbal;
                 $json['addressList'] = $client->getAddressList($user_session);
                 $json['transactionList'] = $client->getTransactionList($user_session);
                 echo json_encode($json); exit;
@@ -43,7 +55,7 @@ if (!empty($_SESSION['user_session'])) {
                     $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,10000));
                     $json['newtoken'] = $_SESSION['token'];
                 } elseif ($_POST['amount'] > $balance) {
-                    $json['message'] = "Withdrawal amount exceeds your wallet balance";
+                    $json['message'] = "Withdrawal amount exceeds your wallet balance. Please note the wallet owner has set a reserve fee of $reserve $short.";
                 } else {
                     $withdraw_message = $client->withdraw($user_session, $_POST['address'], (float)$_POST['amount']);
                     $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,10000));

@@ -1,13 +1,18 @@
 piWallet
 ========
 
-piWallet is a secure opensource online altcoin wallet that works with practically any altcoin.
+piWallet is a secure opensource online altcoin wallet that works with practically any altcoin. piWallet uses PHP, mySQL, JavaScript and Bootstrap. 
 
 Setup: https://github.com/johnathanmartin/piWallet/wiki
 
 Bitcoin Talk: https://bitcointalk.org/index.php?topic=911212
 
+Please be cautious when paying others to install piWallet for you, I'd be willing to install for a negotiable fee. Please send me an email. jmartin@fitbobcat.com
+
 Whats New:
+
+- Manual User Reserve
+
 - QR Codes use a local generation URL 
 
 - Multilanguage support for over 90% of text - Currently supported languages include English, Greek, Mandarin, Hindi, Italian, Portuguese, Spanish, and Tagalog.
@@ -18,8 +23,6 @@ Whats New:
 
 - Google 2 Factor Auth
 
-- [Support Pin](https://github.com/johnathanmartin/piWallet/wiki/Support-Pin)
-
 
 Planned Features:
 - Have QR Codes open in lightbox instead of new tab
@@ -28,6 +31,6 @@ Planned Features:
 
 - Control of Private Keys
 
-Donate:
+More Information:
 
-1LXEEZefwFKBC86oLndPuu7fLJre97Xtyu
+Created by Johnathan Martin of fitbobcat.com
