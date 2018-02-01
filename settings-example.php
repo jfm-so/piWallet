@@ -12,7 +12,7 @@ $rpc_pass = "Cp68nBkCAADKkskaKSskaDKdmSYLtLJ";
 
 $fullname = "Bitcoin"; //Website Title (Do Not include 'wallet')
 $short = "BTC"; //Coin Short (BTC)
-$blockchain_url = "http://blockchain.info/tx/"; //Blockchain Url
+$blockchain_tx_url = "http://blockchain.info/tx/"; //Blockchain Url
 $support = "support@yourwebsite.com"; //Your support eMail
 $hide_ids = array(1); //Hide account from admin dashboard
 $donation_address = "13jy6rHB7HMgQBoYxQQXSM7TFTZZ6CDAAZ"; //Donation Address
