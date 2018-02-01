@@ -267,7 +267,7 @@ function updateTables(json)
                <td>' + json.transactionList[i]['address'] + '</td> \
                <td>' + tx_type + '</td> \
                <td>' + Math.abs(json.transactionList[i]['amount']) + '</td> \
-               <td>' + json.transactionList[i]['fee'] + '</td> \
+               <td>' + (json.transactionList[i]['fee']?json.transactionList[i]['fee']:'') + '</td> \
                <td>' + json.transactionList[i]['confirmations'] + '</td> \
                <td><a href="' + blockchain_url.replace("%s", json.transactionList[i]['txid']) + '" target="_blank">Info</a></td> \
             </tr>');
