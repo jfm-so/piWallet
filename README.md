@@ -5,6 +5,10 @@ piWallet is a secure opensource online altcoin wallet that works with practicall
 
 Setup: https://github.com/johnathanmartin/piWallet/wiki/Installation
 
+TODO: Add a step in the wiki explaining to copy settings-example.php into a new file settings.php and then change the values.
+
+TODO: Add a step in the wiki explaining to delete users.sql.
+
 Bitcoin Talk: https://bitcointalk.org/index.php?topic=911212
 
 Please be cautious when paying others to install piWallet for you, I'd be willing to install for a negotiable fee. Please send me an email. jmartin@fitbobcat.com
