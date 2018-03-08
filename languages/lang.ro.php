@@ -14,6 +14,7 @@ $lang['FORM_PASSCONF'] = 'Confirma parola';
 $lang['FORM_2FA'] = 'Cod autentificare 2FA';
 $lang['FORM_SIGNUP'] = 'Intra in cont';
 $lang['FORM_CREATE'] = '...sau creaza un cont nou:';
+
 // Wallet Page
 $lang['WALLET_HELLO'] = 'Salut';
 $lang['WALLET_BALANCE'] = 'Balanta curenta:';
