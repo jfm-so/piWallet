@@ -9,7 +9,7 @@ $lang = array();
 
 //Home Page
 
-$lang['PAGE_HEADER'] = 'Twój mieszk ' . $fullname . ' witô Ce!';
+$lang['PAGE_HEADER'] = 'Héwò Twój mieszk ' . $fullname . '!';
 $lang['FORM_LOGIN'] = 'Logòwanié';
 $lang['FORM_USER'] = 'Miono';
 $lang['FORM_PASS'] = 'Parola';
@@ -32,7 +32,7 @@ $lang['WALLET_PASSUPDATEOLD'] = 'Stôrô parola';
 $lang['WALLET_PASSUPDATENEW'] = 'Nowô parola';
 $lang['WALLET_PASSUPDATENEWCONF'] = 'Jesz rôz nowô parola';
 $lang['WALLET_PASSUPDATECONF'] = 'Òdswieżë parolã';
-$lang['WALLET_SUPPORTNOTE'] = 'Klëknij wëżi w Pòmòc ë zapiszë swój klucz. Mdze Cë pòmòcny, jeżlë zabôczisz swòji parolë. Pamiãtôj: klucz sã zjinaczô przë kòzdi zjinace parolë!';
+$lang['WALLET_SUPPORTNOTE'] = 'Klëknij wëżi w Pòmòc ë zapiszë swój klucz. Mdze Cë pòmòcny, jeżlë zabôczisz swòjã parolã. Pamiãtôj: klucz sã zjinaczô przë kòzdi zjinace parolë!';
 $lang['WALLET_SEND'] = 'Selôj:';
 $lang['WALLET_ADDRESS'] = 'Adresa';
 $lang['WALLET_AMOUNT'] = 'Sëma';
