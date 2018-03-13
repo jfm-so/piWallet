@@ -2,6 +2,10 @@ body {
 	background-color: #ffefcb;
 }
 
+.langselect {
+	padding-right: 8px;
+}
+
 .navbar-default {
 	background-color: #e7623c;
 	border-color: #b9392b;

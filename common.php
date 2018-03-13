@@ -1,4 +1,8 @@
 <?php
+//ini_set('display_startup_errors',1);
+//ini_set('display_errors',1);
+//error_reporting(-1);
+
 session_start();
 header('Cache-control: private'); // IE 6 FIX
 
@@ -18,26 +22,7 @@ function satoshitrim($satoshitrim) {
    return rtrim(rtrim($satoshitrim, "0"), ".");
 }
 
-$server_url = "/";  // ENTER WEBSITE URL ALONG WITH A TRAILING SLASH
-
-$db_host = "localhost";
-$db_user = "root";
-$db_pass = "password";
-$db_name = "wallet";
-
-$rpc_host = "127.0.0.1";
-$rpc_port = "8332";
-$rpc_user = "bitcoinrpc";
-$rpc_pass = "Cp68nBkCAADKkskaKSskaDKdmSYLtLJ";
-
-$fullname = "Bitcoin"; //Website Title (Do Not include 'wallet')
-$short = "BTC"; //Coin Short (BTC)
-$blockchain_url = "http://blockchain.info/tx/"; //Blockchain Url
-$support = "support@yourwebsite.com"; //Your support eMail
-$hide_ids = array(1); //Hide account from admin dashboard
-$donation_address = "13jy6rHB7HMgQBoYxQQXSM7TFTZZ6CDAAZ"; //Donation Address
-
-$fee = "0"; //Set a fee to prevent negitive balances. WARNING: This function is incomplete. Setting a fee will show a negitve balance for all new user accounts.
+require('settings.php');
 
 if(isSet($_GET['lang']))
 {

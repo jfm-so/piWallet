@@ -125,14 +125,14 @@ echo "<tr><td>".$address."</t>";?>
                <td>'.abs($transaction['amount']).'</td>
                <td>'.$transaction['fee'].'</td>
                <td>'.$transaction['confirmations'].'</td>
-               <td><a href="' . $blockchain_url,  $transaction['txid'] . '" target="_blank">Info</a></td>
+               <td><a href="' . $blockchain_tx_url,  $transaction['txid'] . '" target="_blank">Info</a></td>
             </tr>';
    }
    ?>
    </tbody>
 </table>
 <script type="text/javascript">
-var blockchain_url = "<?=$blockchain_url?>";
+var blockchain_tx_url = "<?=$blockchain_tx_url?>";
 $("#withdrawform input[name='action']").first().attr("name", "jsaction");
 $("#newaddressform input[name='action']").first().attr("name", "jsaction");
 $("#pwdform input[name='action']").first().attr("name", "jsaction");
@@ -267,9 +267,9 @@ function updateTables(json)
                <td>' + json.transactionList[i]['address'] + '</td> \
                <td>' + tx_type + '</td> \
                <td>' + Math.abs(json.transactionList[i]['amount']) + '</td> \
-               <td>' + json.transactionList[i]['fee'] + '</td> \
+               <td>' + (json.transactionList[i]['fee']?json.transactionList[i]['fee']:'') + '</td> \
                <td>' + json.transactionList[i]['confirmations'] + '</td> \
-               <td><a href="' + blockchain_url.replace("%s", json.transactionList[i]['txid']) + '" target="_blank">Info</a></td> \
+               <td><a href="' + blockchain_tx_url.replace("%s", json.transactionList[i]['txid']) + '" target="_blank">Info</a></td> \
             </tr>');
 	}
 }
