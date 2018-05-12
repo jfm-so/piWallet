@@ -27,6 +27,8 @@ Features:
 
 - Mobile App (Additional Addon - see https://FitTechHosting.com/cryptocurrency )
 
+- Fee Sent to Wallet Owner (Included w/ Hosting - https://FitTechHosting.com/cryptocurrency)
+
 Planned Features:
 
 - Have QR Codes open in lightbox instead of new tab
