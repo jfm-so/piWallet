@@ -107,7 +107,7 @@ class User {
 
 			} else {
 
-				$query = $this->mysqli->query("INSERT INTO users (`date`, `ip`, `username`, `password`, `supportpin`) VALUES (\"" . date("n/j/Y g:i a") . "\", \"". $_SERVER['HTTP_X_FORWARDED_FOR'] . "\", \"" . $username ."\", \"" . $password . "\", \"". rand(10000,99999) . "\");");				
+				$query = $this->mysqli->query("INSERT INTO users (`date`, `ip`, `username`, `password`, `supportpin`) VALUES (\"" . date("n/j/Y g:i a") . "\", \"". $_SERVER['REMOTE_ADDR'] . "\", \"" . $username ."\", \"" . $password . "\", \"". rand(10000,99999) . "\");");				
 
 				if ($query)
 				{
