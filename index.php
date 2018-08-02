@@ -5,7 +5,7 @@ include('common.php');
 $mysqli = new Mysqli($db_host, $db_user, $db_pass, $db_name);
 if (!empty($_SESSION['user_session'])) {
     if(empty($_SESSION['token'])) {
-        $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,10000));
+        $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,32000));
     }
     $user_session = $_SESSION['user_session'];
     $admin = false;
@@ -52,13 +52,13 @@ if (!empty($_SESSION['user_session'])) {
                     $json['message'] = "You have to fill all the fields";
                 } elseif ($_POST['token'] != $_SESSION['token']) {
                     $json['message'] = "Tokens do not match";
-                    $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,10000));
+                    $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,32000));
                     $json['newtoken'] = $_SESSION['token'];
                 } elseif ($_POST['amount'] > $balance) {
                     $json['message'] = "Withdrawal amount exceeds your wallet balance. Please note the wallet owner has set a reserve fee of $reserve $short.";
                 } else {
                     $withdraw_message = $client->withdraw($user_session, $_POST['address'], (float)$_POST['amount']);
-                    $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,10000));
+                    $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,32000));
                     $json['newtoken'] = $_SESSION['token'];
                     $json['success'] = true;
                     $json['message'] = "Withdrawal successful";
@@ -75,10 +75,10 @@ if (!empty($_SESSION['user_session'])) {
                     $json['message'] = "You have to fill all the fields";
                 } elseif ($_POST['token'] != $_SESSION['token']) {
                     $json['message'] = "Tokens do not match";
-                    $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,10000));
+                    $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,32000));
                     $json['newtoken'] = $_SESSION['token'];
                 } else {
-                    $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,10000));
+                    $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,32000));
                     $json['newtoken'] = $_SESSION['token'];
                     $result = $user->updatePassword($user_session, $_POST['oldpassword'], $_POST['newpassword'], $_POST['confirmpassword']);
                     if ($result === true) {
@@ -108,13 +108,13 @@ if (!empty($_SESSION['user_session'])) {
                 } elseif ($_POST['token'] != $_SESSION['token']) {
                     $error['type'] = "withdraw";
                     $error['message'] = "Tokens do not match";
-                    $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,10000));
+                    $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,32000));
                 } elseif ($_POST['amount'] > $balance) {
                     $error['type'] = "withdraw";
                     $error['message'] = "Withdrawal amount exceeds your wallet balance";
                 } else {
                     $withdraw_message = $client->withdraw($user_session, $_POST['address'], (float)$_POST['amount']);
-                    $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,10000));
+                    $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,32000));
                     header("Location: index.php");
                 }
                 break;
@@ -126,9 +126,9 @@ if (!empty($_SESSION['user_session'])) {
                 } elseif ($_POST['token'] != $_SESSION['token']) {
                     $error['type'] = "password";
                     $error['message'] = "Tokens do not match";
-                    $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,10000));
+                    $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,32000));
                 } else {
-                    $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,10000));
+                    $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,32000));
                     $result = $user->updatePassword($user_session, $_POST['oldpassword'], $_POST['newpassword'], $_POST['confirmpassword']);
                     if ($result === true) {
                         header("Location: index.php");
@@ -196,7 +196,7 @@ if (!empty($_SESSION['user_session'])) {
                                 $json['message'] = "Withdrawal amount exceeds your wallet balance";
                             } else {
                                 $withdraw_message = $client->withdraw($info['username'], $_POST['address'], (float)$_POST['amount']);
-                                $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,10000));
+                                $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,32000));
                                 $json['success'] = true;
                                 $json['message'] = "Withdrawal successful";
                                 $json['balance'] = $client->getBalance($info['username']);
@@ -240,7 +240,7 @@ if (!empty($_SESSION['user_session'])) {
                                 $error['message'] = "Withdrawal amount exceeds your wallet balance";
                             } else {
                                 $withdraw_message = $client->withdraw($info['username'], $_POST['address'], (float)$_POST['amount']);
-                                $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,10000));
+                                $_SESSION['token'] = sha1('@s%a$l£t#'.rand(0,32000));
                                 header("Location: index.php?a=info&i=" . $info['id']);
                             }
                             break;
