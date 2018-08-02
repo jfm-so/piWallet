@@ -41,8 +41,6 @@ Todo List:
 
 - Issue #78 - PHP Juggling 
 
-- Issue #75 - Google Authenticator Name
-
 - Issue #82 - Strip tags bug
 
 - Issue #83 - change default password from changeme
