@@ -37,7 +37,21 @@ Planned Features:
 
 - Improved Bootstrap Theme 
 
+Todo List:
 
+- Issue #78 - PHP Juggling 
+
+- Issue #75 - Google Authenticator Name
+
+- Issue #82 - Strip tags bug
+
+- Issue #83 - change default password from changeme
+
+- Issue #36  Stop using md5
+
+- Change background from ugly yellow
+
+ 
 More Information:
 
 Created by Johnathan Martin of FitTechHosting.com
