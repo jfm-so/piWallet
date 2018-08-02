@@ -235,12 +235,15 @@ class User {
 	function enableauth()
 
 	{
+		
+		                
 
 	//	global $hide_ids;
-		$id=$_SESSION['user_id'];
-		$secret=$this->createSecret();
-		$qrcode=$this->getQRCodeGoogleUrl('Wallet', $secret);
-		$oneCode = $this->getCode($secret);
+                include 'settings.php';
+                $id=$_SESSION['user_id'];
+                $secret=$this->createSecret();
+                $qrcode=$this->getQRCodeGoogleUrl(urlencode(''.$fullname.' Wallet'), $secret);
+                $oneCode = $this->getCode($secret);
 
 		if (($id)) 
 		{  
