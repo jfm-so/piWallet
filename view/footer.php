@@ -4,6 +4,6 @@
         </div>
 
     </body>
-<b><center><p>Powered by <a href="http://github.com/johnathanmartin/piWallet">piWallet</a></p>
+<b><center><p>Powered by <a href="https://fittechhosting.com/cryptocurrency/">FitTech Hosting</a> & <a href="http://github.com/johnathanmartin/piWallet">piWallet</a></p>
 </center></b>
 </html>
