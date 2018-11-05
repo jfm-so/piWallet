@@ -1,6 +1,8 @@
 <?php
 //ini_set('display_startup_errors',1);
 //ini_set('display_errors',1);
+ini_set('session.gc_maxlifetime', 60*60); // expires in 60 minutes on server side
+ini_set('session.cookie_lifetime', 60*60); // expires in 60 minutes on user side
 //error_reporting(-1);
 
 session_start();

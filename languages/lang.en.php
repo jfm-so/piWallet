@@ -11,12 +11,12 @@ $lang = array();
 
 $lang['PAGE_HEADER'] = 'Welcome to ' . $fullname . ' wallet!';
 $lang['FORM_LOGIN'] = 'Log In';
-$lang['FORM_USER'] = 'Username';
+$lang['FORM_USER'] = 'Username or Email';
 $lang['FORM_PASS'] = 'Password';
 $lang['FORM_PASSCONF'] = 'Confirm Password';
 $lang['FORM_2FA'] = '2FA Authetication Code';
 $lang['FORM_SIGNUP'] = 'Sign Up';
-$lang['FORM_CREATE'] = '...or create a new account:';
+$lang['FORM_CREATE'] = 'Create Account';
 
 // Wallet Page
 

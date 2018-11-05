@@ -2,6 +2,30 @@
 define("IN_WALLET", true);
 include('common.php');
 
+	$modalfirst = '<style>.modal-backdrop {z-index: -1;}</style>
+  <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
+  <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+  <script src="assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">$(window).on("load",function(){$("#errorModal").modal("show");});</script>
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header justify-content-center">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						<i class="now-ui-icons ui-1_simple-remove"></i>
+					</button>
+					<h4 class="title title-up" style="padding:0;">Info</h4>
+				</div>
+				<div class="modal-body">';
+	$modalsecond = '				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+    </div>';
 $mysqli = new Mysqli($db_host, $db_user, $db_pass, $db_name);
 if (!empty($_SESSION['user_session'])) {
     if(empty($_SESSION['token'])) {
@@ -12,6 +36,7 @@ if (!empty($_SESSION['user_session'])) {
     if (!empty($_SESSION['user_admin']) && $_SESSION['user_admin']==1) {
         $admin = true;
     }
+
     $error = array('type' => "none", 'message' => "");
     $client = new Client($rpc_host, $rpc_port, $rpc_user, $rpc_pass);
     $admin_action = false;
@@ -144,20 +169,26 @@ if (!empty($_SESSION['user_session'])) {
                 break;
                 case "support":
                 $error['message'] = "Please contact support via email at $support";
+		echo $modalfirst;
                 echo "Support Key: ";
                 echo $_SESSION['user_supportpin'];
+		echo $modalsecond;
                 break;
                 case "authgen":
                 $user = new User($mysqli);
                 $secret = $user->createSecret();
                 $gen=$user->enableauth();
-                echo $gen;
+		echo $modalfirst;
+                echo "<h3 style='color:red;text-align:center;margin:0;'>Important!</h3><p style='color:red;'>If you do not scan, you need to <b>Disable</b> 2F Auth!</p>" . $gen;
+		echo $modalsecond;
                 break;
                 
                 case "disauth":
                 $user = new User($mysqli);
                 $disauth=$user->disauth();
+		echo $modalfirst;
                 echo $disauth;
+		echo $modalsecond;
                 break;
             }
         }
@@ -306,6 +337,35 @@ if (!empty($_SESSION['user_session'])) {
 } else {
     $error = array('type' => "none", 'message' => "");
     if (!empty($_POST['action'])) {
+//	  require_once "classes/recaptchalib.php";
+	  $privatekey = "6LdAUnIUAAAAAAGBh18wU2yviS6NTjOTOyDn8g-B";
+
+        $username;$password;$auth;$captcha;
+        if(isset($_POST['username']))
+          $username=$_POST['username'];
+        if(isset($_POST['password']))
+          $password=$_POST['password'];
+        if(isset($_POST['auth']))
+          $auth=$_POST['auth'];
+        if(isset($_POST['g-recaptcha-response']))
+          $captcha=$_POST['g-recaptcha-response'];
+/*
+        if(!$captcha){
+                echo '<h2>Please check the the captcha form.</h2>';
+        }
+*/
+        $response=json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$privatekey."&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']), true);
+        if($response['success'] == false)
+        {
+          echo '<style>.modal-backdrop.show {z-index: -1;}</style>
+  <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
+  <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+  <script src="assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">$(window).on("load",function(){$("#captchaModal").modal("show");});</script>';
+        }
+        else
+        {
+    // Code here to handle a successful verification
         $user = new User($mysqli);
         switch ($_POST['action']) {
             case "login":
@@ -334,6 +394,7 @@ if (!empty($_SESSION['user_session'])) {
             }
             break;
         }
+	}
     }
     include("view/header.php");
     include("view/home.php");
