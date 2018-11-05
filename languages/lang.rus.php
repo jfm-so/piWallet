@@ -11,12 +11,12 @@ $lang = array();
 
 $lang['PAGE_HEADER'] = 'Вас приветствует кошелек ' . $fullname . '!';
 $lang['FORM_LOGIN'] = 'Войти';
-$lang['FORM_USER'] = 'Имя пользователя';
+$lang['FORM_USER'] = 'Имя пользователя(Или Емейл, для возможности восстановления)';
 $lang['FORM_PASS'] = 'Пароль';
 $lang['FORM_PASSCONF'] = 'Подтвердить пароль';
 $lang['FORM_2FA'] = 'Код двухфакторной аутентификации';
 $lang['FORM_SIGNUP'] = 'Зарегистрироваться';
-$lang['FORM_CREATE'] = '...или создать новый аккаунт';
+$lang['FORM_CREATE'] = 'Создать Аккаунт';
 
 // Wallet Page
 

@@ -48,7 +48,7 @@
         }
     
         //----------------------------------------------------------------------
-        public static function jpg($frame, $filename = false, $pixelPerPoint = 8, $outerFrame = 4, $q = 85) 
+        public static function jpg($frame, $filename = false, $pixelPerPoint = 8, $outerFrame = 16, $q = 85) 
         {
             $image = self::image($frame, $pixelPerPoint, $outerFrame);
             
@@ -63,8 +63,10 @@
         }
     
         //----------------------------------------------------------------------
-        private static function image($frame, $pixelPerPoint = 4, $outerFrame = 4) 
+        private static function image($frame, $pixelPerPoint = 4, $outerFrame = 16) 
         {
+		$pixelPerPoint = 8;
+		$outerFrame = 4;
             $h = count($frame);
             $w = strlen($frame[0]);
             
@@ -74,7 +76,7 @@
             $base_image =ImageCreate($imgW, $imgH);
             
             $col[0] = ImageColorAllocate($base_image,255,255,255);
-            $col[1] = ImageColorAllocate($base_image,0,0,0);
+            $col[1] = ImageColorAllocate($base_image,0,50,0);
 
             imagefill($base_image, 0, 0, $col[0]);
 

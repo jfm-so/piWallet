@@ -16,7 +16,7 @@ $lang['FORM_PASS'] = 'Contraseña';
 $lang['FORM_PASSCONF'] = 'Confirmar contraseña';
 $lang['FORM_2FA'] = 'Código de autentificación 2FA';
 $lang['FORM_SIGNUP'] = 'Registro';
-$lang['FORM_CREATE'] = '...o crea una cuenta nueva:';
+$lang['FORM_CREATE'] = 'Crea cuenta';
 
 // Wallet Page
 
