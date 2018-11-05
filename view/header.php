@@ -13,7 +13,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>
-    <?=$fullname?> 🌏 (GRN) Web Wallet
+    <?=$fullname?>Web Wallet
   </title>
 <meta property="og:site_name" content="GreenCoin GRN Web Wallet"/>
 <meta property="og:title" content="GreenCoin GRN Web Wallet"/>
@@ -59,8 +59,8 @@
         </div>
       </div>
       <div class="navbar-translate">
-        <a class="navbar-brand" href="/" rel="tooltip" title="<?=$fullname?> (GRN) Web Wallet" data-placement="bottom">
-          <?=$fullname?> GRN Wallet
+        <a class="navbar-brand" href="/" rel="tooltip" title="<?=$fullname?> Web Wallet" data-placement="bottom">
+          <?=$fullname?> Wallet
         </a>
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-bar top-bar"></span>
@@ -83,7 +83,7 @@
                         </a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" rel="tooltip" data-placement="left" title="Change Language"><i class="fa fa-language"></i><p>Language</p></a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" rel="tooltip" data-placement="left" title="Change Language"><i class="fa fa-language"></i><p>Language</p></a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 		<a class="dropdown-item" href="index.php?lang=en"><span class="lang-sm lang-lbl" lang="en"></span></a>
 		<a class="dropdown-item" href="index.php?lang=grc"><span class="lang-sm lang-lbl" lang="el"></span></a>

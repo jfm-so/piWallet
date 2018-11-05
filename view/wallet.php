@@ -186,7 +186,7 @@ echo "<tr><td>".$address."</td>";?>
 <button class="btn" style="padding:0;margin:0;" data-toggle="modal" data-target="#<?php echo $address;?>">
 <img src="<?php echo $server_url;?>qrgen/?address=<?php echo $address;?>" alt="QR Code" style="width:42px;height:42px;border:0;">
 </button>
-  </td><tr>
+  </td></tr>
 <?php
 }
 ?>
@@ -343,10 +343,36 @@ $("#pwdform").submit(function(e)
 
 function updateTables(json)
 {
-	$("#balance").text(json.balance.toFixed(8));
+	$("#balance span").remove();
+	$("#balance").prepend('<span class="badge badge-default">' + json.balance.toFixed(8) + '</span>');
 	$("#alist tbody tr").remove();
 	for (var i = json.addressList.length - 1; i >= 0; i--) {
-		$("#alist tbody").prepend("<tr><td>" + json.addressList[i] + "</td></tr>");
+		$("#alist tbody").prepend("<tr><td>" + json.addressList[i] + '</td><td style="padding:0;"> \
+	<div class="modal fade" id="' + json.addressList[i] + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true"> \
+		<div class="modal-dialog"> \
+			<div class="modal-content"> \
+				<div class="modal-header justify-content-center"> \
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"> \
+						<i class="now-ui-icons ui-1_simple-remove"></i> \
+					</button> \
+					<h4 class="title title-up">Your QR address</h4> \
+				</div> \
+				<div class="modal-body"> \
+					<p style="text-align:center;"> \
+					<img src="/qrgen/?address=' + json.addressList[i] + '" /> \
+					</p> \
+				</div> \
+				<div class="modal-footer"> \
+					<button type="button" class="btn btn-default" data-dismiss="modal">Back</button> \
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> \
+				</div> \
+			</div> \
+		</div> \
+	</div> \
+<button class="btn" style="padding:0;margin:0;" data-toggle="modal" data-target="#' + json.addressList[i] + '"> \
+<img src="/qrgen/?address=' + json.addressList[i] + '" alt="QR Code" style="width:42px;height:42px;border:0;"> \
+</button> \
+  </td></tr>');
 	}
 	$("#txlist tbody tr").remove();
 	for (var i = json.transactionList.length - 1; i >= 0; i--) {
@@ -357,7 +383,7 @@ function updateTables(json)
 		}
 		$("#txlist tbody").prepend('<tr> \
                <td>' + moment(json.transactionList[i]['time'], "X").format('l hh:mm a') + '</td> \
-               <td>' + json.transactionList[i]['address'] + '</td> \
+               <td class="d-none d-lg-block">' + json.transactionList[i]['address'] + '</td> \
                <td>' + tx_type + Math.abs(json.transactionList[i]['amount']) + '</span></td> \
                <td>' + (json.transactionList[i]['fee']?json.transactionList[i]['fee']:'') + '</td> \
                <td>' + json.transactionList[i]['confirmations'] + '</td> \
