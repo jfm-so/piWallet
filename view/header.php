@@ -1,4 +1,7 @@
-<?php if (!defined("IN_WALLET")) { die("Auth Error!"); } ?>
+<?php if (!defined("IN_WALLET")) { die("Auth Error!"); } 
+header("X-XSS-Protection: 1; mode=block");
+header("X-Content-Type-Options: nosniff");
+?>
 <!DOCTYPE HTML>
 
 <html>
