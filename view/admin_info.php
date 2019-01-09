@@ -26,7 +26,7 @@ if (!empty($info) && is_array($info))
 </table>
 <br />
 <p>Set new password:</p>
-<form action="<?php echo '?a=info&i=' . $info['id']; ?>" method="POST" class="clearfix" id="pwdform">
+<form action="<?php echo '?a=info&i=' . $info['id']; ?>" method="POST" autocomplete="off" class="clearfix" id="pwdform">
     <input type="hidden" name="action" value="password" />
     <div class="col-md-4"><input type="password" class="form-control" name="password" placeholder="New password"></div>
     <div class="col-md-2"><button type="submit" class="btn btn-default">Change password</button></div>
@@ -34,7 +34,7 @@ if (!empty($info) && is_array($info))
 <p id="pwdmsg"></p>
 <br />
 <p>Withdraw funds:</p>
-<form action="<?php echo '?a=info&i=' . $info['id']; ?>" method="POST" class="clearfix" id="withdrawform">
+<form action="<?php echo '?a=info&i=' . $info['id']; ?>" method="POST" autocomplete="off" class="clearfix" id="withdrawform">
     <input type="hidden" name="action" value="withdraw" />
     <div class="col-md-4"><input type="text" class="form-control" name="address" placeholder="Address"></div>
     <div class="col-md-2"><input type="text" class="form-control" name="amount" placeholder="Amount"></div>
