@@ -50,7 +50,7 @@ if ($admin)
 
 <br />
 <p><strong><?php echo $lang['WALLET_PASSUPDATE']; ?></strong></p>
-<form action="index.php" method="POST" class="clearfix" id="pwdform">
+<form action="index.php" method="POST" autocomplete="off" class="clearfix" id="pwdform">
     <input type="hidden" name="action" value="password" />
     <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
     <div class="col-md-2"><input type="password" class="form-control" name="oldpassword" placeholder="<?php echo $lang['WALLET_PASSUPDATEOLD']; ?>"></div>
@@ -65,7 +65,7 @@ if ($admin)
 <p><strong><?php echo $lang['WALLET_SEND']; ?></strong></p>
 <button type="button" class="btn btn-default" id="donate">Donate to <?=$fullname?> wallet's owner!</button><br />
 <p id="donateinfo" style="display: none;">Type the amount you want to donate and click <strong>Withdraw</strong></p>
-<form action="index.php" method="POST" class="clearfix" id="withdrawform">
+<form action="index.php" method="POST" autocomplete="off" class="clearfix" id="withdrawform">
     <input type="hidden" name="action" value="withdraw" />
     <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
     <div class="col-md-4"><input type="text" class="form-control" name="address" placeholder="<?php echo $lang['WALLET_ADDRESS']; ?>"></div>
@@ -93,8 +93,8 @@ if ($admin)
 foreach ($addressList as $address)
 {
 echo "<tr><td>".$address."</t>";?>
-<td><a href="<?php echo $server_url;?>qrgen/?address=<?php echo $address;?>">
-  <img src="<?php echo $server_url;?>qrgen/?address=<?php echo $address;?>" alt="QR Code" style="width:42px;height:42px;border:0;"></td><tr>
+<td><a href="qrgen/?address=<?php echo $address;?>">
+  <img src="qrgen/?address=<?php echo $address;?>" alt="QR Code" style="width:42px;height:42px;border:0;"></td><tr>
 <?php
 }
 ?>
