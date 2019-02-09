@@ -1,5 +1,6 @@
 <?php
 define("IN_WALLET", true);
+require_once "classes/recaptchalib.php";
 include('common.php');
 
 $mysqli = new Mysqli($db_host, $db_user, $db_pass, $db_name);
@@ -21,25 +22,25 @@ if (!empty($_SESSION['user_session'])) {
     if (!$admin_action) {
         $noresbal = $client->getBalance($user_session);
         $resbalance = $client->getBalance($user_session) - $reserve;
-	if ($resbalance < 0) {
-		$balance = $noresbal; //Don't show the user a negitive balance if they have no coins with us
-	} else {
-		$balance = $resbalance;
-	}
-	if (!empty($_POST['jsaction'])) {
+    if ($resbalance < 0) {
+        $balance = $noresbal; //Don't show the user a negitive balance if they have no coins with us
+    } else {
+        $balance = $resbalance;
+    }
+    if (!empty($_POST['jsaction'])) {
             $json = array();
             switch ($_POST['jsaction']) {
                 case "new_address":
                 $client->getnewaddress($user_session);
                 $json['success'] = true;
                 $json['message'] = "A new address was added to your wallet";
-		$jsonbal = $client->getBalance($user_session);
-		$jsonbalreserve = $client->getBalance($user_session) - $reserve;
+        $jsonbal = $client->getBalance($user_session);
+        $jsonbalreserve = $client->getBalance($user_session) - $reserve;
                 if ($jsonbalreserve < 0) {
-			$json['balance'] = $jsonbal; 
-		} else {
-			$json['balance'] = $jsonbalreserve; }
-		$json['balance'] = $jsonbal;
+            $json['balance'] = $jsonbal; 
+        } else {
+            $json['balance'] = $jsonbalreserve; }
+        $json['balance'] = $jsonbal;
                 $json['addressList'] = $client->getAddressList($user_session);
                 $json['transactionList'] = $client->getTransactionList($user_session);
                 echo json_encode($json); exit;
@@ -305,36 +306,57 @@ if (!empty($_SESSION['user_session'])) {
     }
 } else {
     $error = array('type' => "none", 'message' => "");
-    if (!empty($_POST['action'])) {
-        $user = new User($mysqli);
-        switch ($_POST['action']) {
-            case "login":
-            $result = $user->logIn($_POST['username'], $_POST['password'], $_POST['auth']);
-            if (!is_array($result)) {
-                $error['type'] = "login";
-                $error['message'] = $result;
-            } else {
-                $_SESSION['user_session'] = $result['username'];
-                $_SESSION['user_admin'] = $result['admin'];
-                $_SESSION['user_supportpin'] = $result['supportpin'];
-                $_SESSION['user_id'] = $result['id'];
-                header("Location: index.php");
-            }
-            break;
-            case "register":
-            $result = $user->add($_POST['username'], $_POST['password'], $_POST['confirmPassword']);
-            if ($result !== true) {
-                $error['type'] = "register";
-                $error['message'] = $result;
-            } else {
-                $username   = $mysqli->real_escape_string(   strip_tags(          $_POST['username']   ));
-                $_SESSION['user_session'] = $username;
-                $_SESSION['user_supportpin'] = "Please relogin for Support Key";
+    // verificar a chave secreta
+    $response = null;
+    $reCaptcha = new ReCaptcha($secret);
+    $response = $reCaptcha->verifyResponse($_SERVER["REMOTE_ADDR"], $_POST["g-recaptcha-response"]);
+    if ($response != null && $response->success) {
+
+        $username;$password;$auth;$captcha;
+        if(isset($_POST['username']))
+          $username=$_POST['username'];
+        if(isset($_POST['password']))
+          $password=$_POST['password'];
+        if(isset($_POST['auth']))
+          $auth=$_POST['auth'];
+        if(isset($_POST['g-recaptcha-response']))
+          $captcha=$_POST['g-recaptcha-response'];
+
+        // Code here to handle a successful verification
+            $error = array('type' => "none", 'message' => "");
+            $user = new User($mysqli);
+            switch ($_POST['action']) {
+                case "login":
+                $result = $user->logIn($_POST['username'], $_POST['password'], $_POST['auth']);
+                if (!is_array($result)) {
+                    $error['type'] = "login";
+                    $error['message'] = $result;
+                } else {
+                    $_SESSION['user_session'] = $result['username'];
+                    $_SESSION['user_admin'] = $result['admin'];
+                    $_SESSION['user_supportpin'] = $result['supportpin'];
+                    $_SESSION['user_id'] = $result['id'];
                     header("Location: index.php");
-            }
+                }
+                break;
+                case "register":
+                $result = $user->add($_POST['username'], $_POST['password'], $_POST['confirmPassword']);
+                if ($result !== true) {
+                    $error['type'] = "register";
+                    $error['message'] = $result;
+                } else {
+                    $username   = $mysqli->real_escape_string(   strip_tags(          $_POST['username']   ));
+                    $_SESSION['user_session'] = $username;
+                    $_SESSION['user_supportpin'] = "Please relogin for Support Key";
+                    header("Location: index.php");
+                }
+
             break;
         }
-    }
+        }
+        else {
+              //insert error messenge here
+              }
     include("view/header.php");
     include("view/home.php");
     include("view/footer.php");

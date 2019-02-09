@@ -22,6 +22,7 @@
         <!-- End Bootstrap include stuff-->
         <title><?=$fullname?> Wallet</title>
         <link rel="shortcut icon" href="favicon.ico">
+        <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
     
     
